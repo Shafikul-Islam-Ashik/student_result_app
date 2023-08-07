@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <!-- bootstrap css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <button
+            class="btn btn-primary mb-3"
+            data-bs-toggle="modal"
+            data-bs-target="#add-new-student-modal"
+          >
+            Add New Student
+          </button>
+          <a href="./index.html" class="btn btn-info mb-3">Search Result</a>
+          <!-- students data table starts -->
+          <div class="card shadow">
+            <div class="card-body">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Roll</th>
+                    <th>Reg No</th>
+                    <th>Created At</th>
+                    <th>Result</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody class="all_students_data"></tbody>
+              </table>
+            </div>
+          </div>
+          <!-- students data table ends -->
+        </div>
+      </div>
+    </div>
+
+    <!-- add new student modal starts -->
+    <div class="modal fade" id="add-new-student-modal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Add New Student</h2>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="msg"></div>
+            <form id="student_create_form">
+              <div class="my-2">
+                <label for="name" class="my-1">Name</label>
+                <input type="text" class="form-control" name="name" id="name" />
+              </div>
+              <div class="my-2">
+                <label for="roll" class="my-1">Roll No.</label>
+                <input type="text" class="form-control" name="roll" id="roll" />
+              </div>
+              <div class="my-2">
+                <label for="reg" class="my-1">Reg No.</label>
+                <input type="text" class="form-control" name="reg" id="reg" />
+              </div>
+              <div class="my-2">
+                <label for="photo" class="my-1">Photo Link</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="photo"
+                  id="photo"
+                />
+              </div>
+              <div class="my-3">
+                <button class="btn btn-primary" type="submit">Create</button>
+                <button class="btn btn-danger" type="reset">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- add new student modal ends -->
+
+    <!-- add result modal starts -->
+    <div class="modal fade" id="add-result-modal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Add Result</h2>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="result-msg"></div>
+            <form id="add_result_form">
+              <div class="my-2">
+                <label for="bangla" class="my-1">Bangla</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="bangla"
+                  id="bangla"
+                />
+              </div>
+              <div class="my-2">
+                <label for="english" class="my-1">English</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="english"
+                  id="english"
+                />
+              </div>
+              <div class="my-2">
+                <label for="math" class="my-1">Math</label>
+                <input type="text" class="form-control" name="math" id="math" />
+              </div>
+              <div class="my-2">
+                <label for="science" class="my-1">Science</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="science"
+                  id="science"
+                />
+              </div>
+              <div class="my-2">
+                <label for="social_science" class="my-1">Social Science</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="social_science"
+                  id="social_science"
+                />
+              </div>
+              <div class="my-2">
+                <label for="religion" class="my-1">Religion</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="religion"
+                  id="religion"
+                />
+              </div>
+
+              <div class="my-2">
+                <input type="hidden" class="form-control" name="id" />
+              </div>
+
+              <div class="my-3">
+                <button class="btn btn-primary" type="submit">
+                  Add Result
+                </button>
+                <button class="btn btn-danger" type="reset">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- add result modal ends -->
+
+    <!-- edit result modal starts -->
+    <div class="modal fade" id="edit-result-modal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Edit Result</h2>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="edit-result-msg"></div>
+            <form id="edit_result_form">
+              <div class="my-2">
+                <label for="bangla" class="my-1">Bangla</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="bangla"
+                  id="bangla"
+                />
+              </div>
+              <div class="my-2">
+                <label for="english" class="my-1">English</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="english"
+                  id="english"
+                />
+              </div>
+              <div class="my-2">
+                <label for="math" class="my-1">Math</label>
+                <input type="text" class="form-control" name="math" id="math" />
+              </div>
+              <div class="my-2">
+                <label for="science" class="my-1">Science</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="science"
+                  id="science"
+                />
+              </div>
+              <div class="my-2">
+                <label for="social_science" class="my-1">Social Science</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="social_science"
+                  id="social_science"
+                />
+              </div>
+              <div class="my-2">
+                <label for="religion" class="my-1">Religion</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="religion"
+                  id="religion"
+                />
+              </div>
+
+              <div class="my-2">
+                <input type="hidden" class="form-control" name="id" />
+              </div>
+
+              <div class="my-3">
+                <button class="btn btn-primary" type="submit">
+                  Update Result
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- edit result modal ends -->
+
+    <!-- edit student modal starts -->
+    <div class="modal fade" id="edit-student-modal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Edit Student</h2>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="edit-msg"></div>
+            <form id="student_edit_form">
+              <div class="my-2">
+                <label for="name" class="my-1">Name</label>
+                <input type="text" class="form-control" name="name" id="name" />
+              </div>
+              <div class="my-2">
+                <label for="roll" class="my-1">Roll No.</label>
+                <input type="text" class="form-control" name="roll" id="roll" />
+              </div>
+              <div class="my-2">
+                <label for="reg" class="my-1">Reg No.</label>
+                <input type="text" class="form-control" name="reg" id="reg" />
+              </div>
+              <div class="my-2">
+                <label for="photo" class="my-1">Photo Link</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="photo"
+                  id="photo"
+                />
+              </div>
+
+              <div class="my-2">
+                <input type="hidden" class="form-control" name="id" />
+              </div>
+
+              <div class="my-2 d-flex justify-content-center">
+                <img
+                  style="
+                    height: 100px;
+                    width: 100px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                  "
+                  src=""
+                  alt=""
+                />
+              </div>
+              <div class="my-3">
+                <button class="btn btn-primary w-100" type="submit">
+                  Update
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- edit student modal ends -->
+
+    <!-- show single student modal starts -->
+    <div class="modal fade" id="show_single_student-modal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Student Details</h4>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="card single_student"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- show single student modal ends -->
+
+    <!-- bootstrap js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- custom js -->
+    <script src="./src/data.js"></script>
+    <script src="./src/functins.js"></script>
+    <script src="./src/main.js"></script>
+  </body>
+</html>

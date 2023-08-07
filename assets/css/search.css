@@ -1,0 +1,13 @@
+/* mark sheet */
+#marksheet .top-section .info-wrapper > div {
+  font-size: 14px;
+  margin-bottom: -10px;
+}
+#marksheet .top-section {
+  background: #fafafa;
+}
+
+/* loader */
+.loader {
+  display: none;
+}
