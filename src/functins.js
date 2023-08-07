@@ -152,16 +152,6 @@ const getResult = (mark) => {
   };
 }; // ends getResult function
 
-/**
- * function for claculate final result (gpa, grade and cgpa) of all subject
- * @param {mark of bnagla} ban
- * @param {mark of english} eng
- * @param {mark of math} math
- * @param {mark of science} s
- * @param {mark of social_science} ss
- * @param {mark of religion} reli
- * @returns result (passed/failed) and letterGrades (mark,gpa,grade) of all subject in object format {result:val, letterGrade: val}
- */
 
 /**
  * function for claculate final result (gpa, grade and cgpa) of all subject
